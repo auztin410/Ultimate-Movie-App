@@ -8,3 +8,4 @@ List of features:
 * Movies to watch- a list of upcoming movies you want to see.
 * A reference for movies and their chronological order.
 * Search for movies.
+* Random movie button.

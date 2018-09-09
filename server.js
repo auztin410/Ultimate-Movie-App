@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 const passport = require('./passport');
 const PORT = process.env.PORT || 3001;
 const app = express();
-const routes = require("./routes/user");
+const user = require("./routes/user");
 
 
 
@@ -43,9 +43,9 @@ app.use(passport.session()) // calls the deserializeUser
 
   // Using routes
 // =============
-app.use(routes);
+// app.use(routes);
 
-app/use("/user", user);
+app.use("/user", user);
 
 
 

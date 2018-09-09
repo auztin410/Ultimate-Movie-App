@@ -9,3 +9,4 @@ List of features:
 * A reference for movies and their chronological order.
 * Search for movies.
 * Random movie button.
+* Graphing movie break down.

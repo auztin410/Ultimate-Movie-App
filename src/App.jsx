@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
-import './App.css'
-import LoginForm from './components/Login/LoginForm'
-import SignupForm from './components/SignupForm'
-import Header from './components/Header'
-import Home from './components/Home'
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
+import './App.css';
+import LoginForm from './components/Login/LoginForm';
+import SignupForm from './components/SignupForm';
+import Header from './components/Header';
+import Home from './components/Home';
+import Search from './components/Search';
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -15,6 +16,11 @@ const DisplayLinks = props => {
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
 							Home
+						</Link>
+					</li>
+					<li className="nav-item">
+						<Link to="/search" className="nav-link">
+						Search
 						</Link>
 					</li>
 					<li>
@@ -120,6 +126,8 @@ class App extends Component {
 				{/*  ROUTES */}
 				{/* <Route exact path="/" component={Home} /> */}
 				<Route exact path="/" render={() => <Home user={this.state.user} />} />
+				{/* <Route exact path="/search" render={() => <Search user={this.state.user} />} /> */}
+				<Route exact path="/search" component={Search} />
 				<Route
 					exact
 					path="/login"

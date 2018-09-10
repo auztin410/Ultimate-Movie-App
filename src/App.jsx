@@ -127,7 +127,7 @@ class App extends Component {
 				{/* <Route exact path="/" component={Home} /> */}
 				<Route exact path="/" render={() => <Home user={this.state.user} />} />
 				{/* <Route exact path="/search" render={() => <Search user={this.state.user} />} /> */}
-				<Route exact path="/search" component={Search} />
+				<Route exact path="/search" render={() => <Search user={this.state.user} />}  />
 				<Route
 					exact
 					path="/login"

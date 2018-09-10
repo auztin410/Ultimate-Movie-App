@@ -1,13 +1,23 @@
 import React from 'react';
 
 const Search = props => {
-    return(
-        <div>
-    <h1>Welcome to the Search Page!</h1>
-    <p>{props.user}</p>
-    </div>
-    );
-    
+    if (props.user) {
+		return (
+			<div className="Search">
+				<p>Current User:</p>
+                <p>{props.user.local.username}</p>
+			</div>
+		)
+	} else {
+		return (
+			<div className="Search">
+				<p>Current User:</p>
+				<code>
+					{JSON.stringify(props)}
+				</code>
+			</div>
+		)
+	}
 }
 
 export default Search;

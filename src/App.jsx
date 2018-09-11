@@ -7,6 +7,7 @@ import SignupForm from './components/SignupForm';
 import Header from './components/Header';
 import Home from './components/Home';
 import Search from './components/Search';
+import Display from './components/Display';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -121,6 +122,7 @@ class App extends Component {
 			})
 	}
 
+
 	render() {
 		return (
 			<div className="App">
@@ -143,6 +145,7 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
+				<Display />	
 			</div>
 		)
 	}

@@ -28,7 +28,7 @@ const DisplayLinks = props => {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Search />
+						<Search user={props} />
 					</li>
 				</ul>
 			</nav>
@@ -53,7 +53,7 @@ const DisplayLinks = props => {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Search />
+						<Search user={props}/>
 					</li>
 				</ul>
 			</nav>

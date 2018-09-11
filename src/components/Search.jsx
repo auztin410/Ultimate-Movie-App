@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from "axios";
-import Movie from './Movie';
+import '../App.css';
 
 class Search extends Component {
     
     constructor(props) {
-        super()
+        super(props)
         this.state = {
             movie: '',
             year: '',
             props: '',
-            data: '',
+            search: '',
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,20 +27,29 @@ class Search extends Component {
     handleSearch(event) {
         let queryUrl = `http://www.omdbapi.com/?t=${this.state.movie}&y=${this.state.year}&plot=short&apikey=trilogy`;
 
-        
+        let image = `https://api.themoviedb.org/3/search/movie?api_key=8fa64e2647c4daa2d8b345906657ce66&query=${this.state.movie}`
+
+        // axios.get(image).then((res) => {
+        //     console.log("image");
+        //     console.log(res);
+        //     document.body.style.backgroundRepeat = "no-repeat";
+        //     document.body.style.backgroundSize= "cover";
+        //     document.body.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${res.data.results[0].poster_path})`
+        // });
+
         axios.get(queryUrl).then((res) => {
             console.log(res);
             this.setState({
                 movie: '',
                 year: '',
-                data: res,
+                search: res,
             });
         });
         
     }
 
     render() {
-        if (this.state.data) {
+        if (this.state.search) {
             return (
                 <div className="Search">
                     {/* <p>Current User:</p>
@@ -55,8 +64,19 @@ class Search extends Component {
                     {" "}
                     <FontAwesomeIcon icon="search" onClick={this.handleSearch} />
                 </form>
-                <div>
-                    <Movie movie={this.state.data}/>
+                <br/>
+                <div id="movie-display">
+                    <img src={this.state.search.data.Poster}/>
+                    <h1>Title: {this.state.search.data.Title}</h1>
+                    <p>Date of Release: {this.state.search.data.Released}</p>
+                    <p>Rated: {this.state.search.data.Rated}</p>
+                    <p>Runtime: {this.state.search.data.Runtime}</p>
+                    <p>Directed by: {this.state.search.data.Director}</p>
+                    <p>Actors: {this.state.search.data.Actors}</p>
+                    <p>Plot: {this.state.search.data.Plot}</p>
+                    <p>Awards: {this.state.search.data.Awards}</p>
+                    <p>MetaScore: {this.state.search.data.Metascore}</p>
+                    <p>Imdb Rating: {this.state.search.data.imdbRating}</p>
                 </div>
                 
                 </div>

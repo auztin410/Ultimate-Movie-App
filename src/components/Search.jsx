@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from "axios";
+import Movie from './Movie';
 
 class Search extends Component {
     
@@ -10,6 +11,7 @@ class Search extends Component {
             movie: '',
             year: '',
             props: '',
+            data: '',
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -28,15 +30,17 @@ class Search extends Component {
         
         axios.get(queryUrl).then((res) => {
             console.log(res);
+            this.setState({
+                movie: '',
+                year: '',
+                data: res,
+            });
         });
-        this.setState({
-            movie: '',
-            year: '',
-        });
+        
     }
 
     render() {
-        if (this.props.user) {
+        if (this.state.data) {
             return (
                 <div className="Search">
                     {/* <p>Current User:</p>
@@ -51,6 +55,10 @@ class Search extends Component {
                     {" "}
                     <FontAwesomeIcon icon="search" onClick={this.handleSearch} />
                 </form>
+                <div>
+                    <Movie movie={this.state.data}/>
+                </div>
+                
                 </div>
             )
         } else {
@@ -65,10 +73,12 @@ class Search extends Component {
                     />
                     {" "}
                     <FontAwesomeIcon icon="search" onClick={this.handleSearch} />
-                </form>                    
+                </form>
+                              
                 </div>
             )
         }
+        
     }
     
 }

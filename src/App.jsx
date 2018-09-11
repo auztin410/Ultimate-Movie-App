@@ -7,6 +7,10 @@ import SignupForm from './components/SignupForm';
 import Header from './components/Header';
 import Home from './components/Home';
 import Search from './components/Search';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -15,18 +19,16 @@ const DisplayLinks = props => {
 				<ul className="nav">
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
-							Home
-						</Link>
-					</li>
-					<li className="nav-item">
-						<Link to="/search" className="nav-link">
-						Search
+							<FontAwesomeIcon icon="home" />
 						</Link>
 					</li>
 					<li>
 						<Link to="#" className="nav-link" onClick={props._logout}>
-							Logout
+						<FontAwesomeIcon icon="sign-out-alt" />
 						</Link>
+					</li>
+					<li className="nav-item">
+						<Search />
 					</li>
 				</ul>
 			</nav>
@@ -37,18 +39,21 @@ const DisplayLinks = props => {
 				<ul className="nav">
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
-							Home
+						<FontAwesomeIcon icon="home" />
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/login" className="nav-link">
-							login
+							<FontAwesomeIcon icon="user" />
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/signup" className="nav-link">
-							sign up
+							<FontAwesomeIcon icon="user-plus" />
 						</Link>
+					</li>
+					<li className="nav-item">
+						<Search />
 					</li>
 				</ul>
 			</nav>
@@ -119,7 +124,6 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<h1>This is the main App component</h1>
 				<Header user={this.state.user} />
 				{/* LINKS to our different 'pages' */}
 				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />

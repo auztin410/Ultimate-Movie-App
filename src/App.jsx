@@ -28,7 +28,7 @@ const DisplayLinks = props => {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Search user={props} />
+						{/* <Search user={props} /> */}
 					</li>
 				</ul>
 			</nav>
@@ -53,7 +53,7 @@ const DisplayLinks = props => {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Search user={props}/>
+						{/* <Search user={props}/> */}
 					</li>
 				</ul>
 			</nav>
@@ -62,11 +62,12 @@ const DisplayLinks = props => {
 }
 
 class App extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			test: this.props,
 		}
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
@@ -144,6 +145,7 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}	
+				<Search user={this.state.user} />
 			</div>
 		)
 	}
